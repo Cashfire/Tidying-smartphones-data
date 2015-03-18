@@ -1,4 +1,4 @@
-setwd("F:/niniProgramming/cleanDate/course project")
+ 
 ##merger all test files,dim(2964*563)
 Test_activity<-read.table("UCI HAR Dataset/test/y_test.txt",header=T)
 Test_features<-read.table("UCI HAR Dataset/test/X_test.txt",header=T)
@@ -9,10 +9,12 @@ Train_activity<-read.table("UCI HAR Dataset/train/y_train.txt",header=T)
 Train_features<-read.table("UCI HAR Dataset/train/X_train.txt",header=T)
 Train_subject<-read.table("UCI HAR Dataset/train/subject_train.txt",header=T)
 dataTrain<-cbind(Train_activity,Train_subject,Train_features)
-##unify colnames and merger test&train dataset,dim(7351*563)
+
+##unify colnames and merger test & train dataset,dim(7351*563)
 colnames(dataTest)<-c(1:563)
 colnames(dataTrain)<-c(1:563)
 data<-rbind(dataTest, dataTrain)
+
 ##make logic index for subsetting the mean and standard deviation
 featureLabels<-read.table("UCI HAR Dataset/features.txt",header=F)
 Index<-grepl("mean()",featureLabels$V2, fixed = TRUE) | grepl("std()", featureLabels$V2, fixed = TRUE)
